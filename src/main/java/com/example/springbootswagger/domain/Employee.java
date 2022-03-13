@@ -1,4 +1,4 @@
-package com.example.springbootswagger.model;
+package com.example.springbootswagger.domain;
 
 import lombok.Data;
 
