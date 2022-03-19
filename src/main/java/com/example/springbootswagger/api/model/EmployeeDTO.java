@@ -1,6 +1,7 @@
 package com.example.springbootswagger.api.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,10 +16,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class EmployeeDTO {
 
+    @Schema(description = "The employee first name" )
     private String firstName;
 
+    @Schema(description = "The employee last name")
     private String lastName;
 
+    @Schema(description = "The employee email id")
     private String emailId;
 
     @JsonProperty("employee_url")
