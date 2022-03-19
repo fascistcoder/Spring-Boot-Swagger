@@ -33,4 +33,16 @@ public class EmployeeController {
     public EmployeeDTO getEmployeeById(@PathVariable Long id){
         return employeeService.getEmployeeById(id);
     }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public EmployeeDTO createNewEmployee(@RequestBody EmployeeDTO employeeDTO){
+        return employeeService.createNewEmployee(employeeDTO);
+    }
+
+    @PutMapping({"/{id}"})
+    @ResponseStatus(HttpStatus.OK)
+    public EmployeeDTO updateEmployee(@PathVariable Long id, @RequestBody EmployeeDTO employeeDTO){
+        return employeeService.saveEmployeeByDto(id, employeeDTO);
+    }
 }

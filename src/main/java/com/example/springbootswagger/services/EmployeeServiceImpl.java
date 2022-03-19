@@ -3,6 +3,7 @@ package com.example.springbootswagger.services;
 import com.example.springbootswagger.api.mapper.EmployeeMapper;
 import com.example.springbootswagger.api.model.EmployeeDTO;
 import com.example.springbootswagger.controllers.EmployeeController;
+import com.example.springbootswagger.domain.Employee;
 import com.example.springbootswagger.repositories.EmployeeRepository;
 import org.springframework.stereotype.Service;
 
@@ -50,5 +51,28 @@ public class EmployeeServiceImpl implements EmployeeService{
                     return employeeDTO;
                 })
                 .orElseThrow(ResourceNotFoundException::new);
+    }
+
+    @Override
+    public EmployeeDTO createNewEmployee(EmployeeDTO employeeDTO) {
+        return saveAndReturnByDTO(employeeMapper.employeeDTOToEmployee(employeeDTO));
+    }
+
+    @Override
+    public EmployeeDTO saveEmployeeByDto(Long id, EmployeeDTO employeeDTO) {
+        Employee employee = employeeMapper.employeeDTOToEmployee(employeeDTO);
+        employee.setId(id);
+
+        return saveAndReturnByDTO(employee);
+    }
+
+    private EmployeeDTO saveAndReturnByDTO(Employee employee) {
+        Employee savedEmployee = employeeRepository.save(employee);
+
+        EmployeeDTO employeeDTO = employeeMapper.employeeToEmployeeDTO(savedEmployee);
+
+        employeeDTO.setEmployeeUrl(getEmployeeUrl(savedEmployee.getId()));
+
+        return employeeDTO;
     }
 }
