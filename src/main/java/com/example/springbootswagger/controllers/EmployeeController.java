@@ -45,4 +45,10 @@ public class EmployeeController {
     public EmployeeDTO updateEmployee(@PathVariable Long id, @RequestBody EmployeeDTO employeeDTO){
         return employeeService.saveEmployeeByDto(id, employeeDTO);
     }
+
+    @DeleteMapping({"/{id}"})
+    @ResponseStatus(HttpStatus.OK)
+    public void deleteEmployee(@PathVariable Long id){
+        employeeService.deleteEmployeeById(id);
+    }
 }

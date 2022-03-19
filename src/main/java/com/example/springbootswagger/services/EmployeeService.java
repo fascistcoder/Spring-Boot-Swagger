@@ -18,4 +18,6 @@ public interface EmployeeService {
     EmployeeDTO createNewEmployee(EmployeeDTO employeeDTO);
 
     EmployeeDTO saveEmployeeByDto(Long id, EmployeeDTO employeeDTO);
+
+    void deleteEmployeeById(Long id);
 }
