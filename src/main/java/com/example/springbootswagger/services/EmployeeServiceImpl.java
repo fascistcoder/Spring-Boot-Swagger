@@ -40,4 +40,15 @@ public class EmployeeServiceImpl implements EmployeeService{
                 })
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public EmployeeDTO getEmployeeById(Long id) {
+        return employeeRepository.findById(id)
+                .map(employeeMapper::employeeToEmployeeDTO)
+                .map(employeeDTO -> {
+                    employeeDTO.setEmployeeUrl(getEmployeeUrl(id));
+                    return employeeDTO;
+                })
+                .orElseThrow(ResourceNotFoundException::new);
+    }
 }

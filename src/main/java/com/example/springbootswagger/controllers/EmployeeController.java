@@ -1,12 +1,10 @@
 package com.example.springbootswagger.controllers;
 
+import com.example.springbootswagger.api.model.EmployeeDTO;
 import com.example.springbootswagger.api.model.EmployeeListDTO;
 import com.example.springbootswagger.services.EmployeeService;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author <a href="pulkit.aggarwal@upgrad.com">Pulkit Aggarwal</a>
@@ -28,5 +26,11 @@ public class EmployeeController {
     @ResponseStatus(HttpStatus.OK)
     public EmployeeListDTO getAllEmployees(){
         return new EmployeeListDTO(employeeService.getAllEmployees());
+    }
+
+    @GetMapping({"/{id}"})
+    @ResponseStatus(HttpStatus.OK)
+    public EmployeeDTO getEmployeeById(@PathVariable Long id){
+        return employeeService.getEmployeeById(id);
     }
 }
