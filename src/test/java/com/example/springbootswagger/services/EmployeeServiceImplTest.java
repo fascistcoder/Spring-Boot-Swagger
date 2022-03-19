@@ -61,4 +61,20 @@ class EmployeeServiceImplTest {
         //then
         assertEquals(2, employeeDTOList.size());
     }
+
+    @Test
+    void getEmployeeById() {
+    }
+
+    @Test
+    void createNewEmployee() {
+    }
+
+    @Test
+    void saveEmployeeByDto() {
+    }
+
+    @Test
+    void deleteEmployeeById() {
+    }
 }
