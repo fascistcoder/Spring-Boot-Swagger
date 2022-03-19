@@ -1,5 +1,7 @@
 package com.example.springbootswagger.domain;
 
+import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -15,11 +17,15 @@ public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Schema(description = "The database generated employee ID")
     private Long id;
 
+    @Schema(description = "The employee first name" )
     private String firstName;
 
+    @Schema(description = "The employee last name")
     private String lastName;
 
+    @Schema(description = "The employee email id")
     private String emailId;
 }
